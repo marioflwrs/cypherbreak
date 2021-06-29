@@ -6,6 +6,7 @@ import morgan from "morgan";
 import userRoute from "./routes/users.js";
 import authRoute from "./routes/auth.js";
 import postRoute from "./routes/posts.js";
+import jamRoute from "./routes/jams.js";
 
 const app = express();
 
@@ -24,6 +25,7 @@ mongoose.connect(process.env.CYPHERBREAK_DB_URL, {
   app.use("/api/users", userRoute);
   app.use("/api/auth", authRoute);
   app.use("/api/posts", postRoute);
+  app.use("/api/jams", jamRoute);
 
   app.listen(5000, () => {
     console.log("backend server is running!")

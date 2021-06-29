@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import router from "../routes/auth.js";
 
 const PostSchema = new mongoose.Schema (
   {
