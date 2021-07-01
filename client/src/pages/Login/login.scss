@@ -1,0 +1,73 @@
+.login {
+  display: flex;
+  //background-image: url("../../assets/images/BMJH3897.JPG");
+  min-width: 100vw;
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: repeat;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+
+  .login-title {
+    color: white;
+  }
+
+  .login-box {
+    height: 350px;
+    padding: 20px;
+    background-color: rgba(134, 134, 134, 0.5);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    text-align: center;
+    border-radius: 10px;
+
+    
+
+    .login-input {
+      height: 50px;
+      border-radius: 10px;
+      border: 1px solid white;
+      font-size: 18px;
+      padding-left: 20px;
+      background-color: rgba(134, 134, 134, 0);
+      color:white;
+   
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .login-button {
+      height: 50px;
+      border-radius: 10px;
+      border: none;
+      background-color: rgba(192, 192, 192, 0.5);
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .forgot-pass {
+      color: white;
+      cursor: pointer;
+      padding-top: 10px;
+    }
+
+    .login-register-button {
+      height: 50px;
+      border-radius: 10px;
+      border: none;
+      background-color: rgba(192, 192, 192, 0.5);
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+  }
+}
