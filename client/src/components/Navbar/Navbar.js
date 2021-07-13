@@ -1,5 +1,5 @@
 import "./navbar.scss";
-
+import { Search } from '@material-ui/icons';
 export default function Navbar() {
   return (
     <div>
@@ -13,7 +13,12 @@ export default function Navbar() {
             <input placeholder="Search for" className="search-input" />
           </div>
         </div>
-        <div className="topbar-right"></div>
+        <div className="topbar-right">
+          <div className="topbar-links">
+            <span className="topbar-link"></span>
+            <span className="topbar-link"></span>
+          </div>
+        </div>
       </div>
     </div>
   )
