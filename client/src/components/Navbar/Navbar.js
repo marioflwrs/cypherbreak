@@ -1,12 +1,13 @@
 import "./navbar.scss";
 
 import boxwon from "../../assets/images/box.JPG";
+
 import { Search, Comment, Person } from '@material-ui/icons';
 export default function Navbar() {
   return (
     <div>
       <div className="topbar-container">
-      
+
         <div className="topbar-left">
           <span className="logo">CYPHERBREAK</span>
         </div>

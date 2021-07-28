@@ -28,7 +28,7 @@ export default function Share() {
 
             <div className="share-option">
               <Event htmlColor="goldenrod" className="share-icon" />
-              <span className="share-option-text">Jam</span>
+              <span className="share-option-text">Jams</span>
             </div>
 
             <button className="share-button">Share</button>

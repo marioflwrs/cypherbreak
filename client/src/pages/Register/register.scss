@@ -1,4 +1,4 @@
-.login {
+.register {
   display: flex;
   //background-image: url("../../assets/images/BMJH3897.JPG");
   min-width: 100vw;
@@ -8,12 +8,12 @@
   justify-content: center;
   align-items: center;
   background-color: black;
-  .login-title {
+  .register-title {
     color: white;
   }
 
-  .login-box {
-    height: 500px;
+  .register-box {
+    height: 450px;
     padding: 20px;
     background-color: rgba(134, 134, 134, 0.5);
     display: flex;
@@ -24,7 +24,7 @@
 
     
 
-    .login-input {
+    .register-input {
       height: 50px;
       border-radius: 10px;
       border: 1px solid white;
@@ -43,7 +43,7 @@
       }
     }
 
-    .login-button {
+    .register-button {
       height: 50px;
       border-radius: 10px;
       border: none;
@@ -53,7 +53,7 @@
       font-size: 18px;
     }
 
-    .forgot-pass {
+    .forgot-password {
       color: white;
       cursor: pointer;
       padding-top: 10px;
