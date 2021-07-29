@@ -6,3 +6,7 @@
 html {
   background-color: #262626;
 }
+
+a {
+  text-decoration: none;
+}

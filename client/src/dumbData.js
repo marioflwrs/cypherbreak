@@ -1,25 +1,25 @@
 export const Users = [
   {
     id: 1,
-    userAvatar: "./assets/images/dom1.JPG",
-    username: "Domkey"
+    userAvatar: "images/dom1.JPG",
+    username: "domkey"
   },
   {
     id: 2,
-    userAvatar: "./assets/images/fleg2.PNG",
-    username: "DJFleg"
+    userAvatar: "images/fleg2.PNG",
+    username: "fleg"
   },{
     id: 3,
-    userAvatar: "./assets/images/palmer.PNG",
-    username: "Palmer"
+    userAvatar: "images/palmer.PNG",
+    username: "palmer"
   },{
     id: 4,
-    userAvatar: "./assets/images/oscar.JPG",
-    username: "Oscar"
+    userAvatar: "images/oscar.JPG",
+    username: "oscar"
   },{
     id: 5,
-    userAvatar: "./assets/images/hibbz.JPG",
-    username: "Hibz"
+    userAvatar: "images/hibbz.JPG",
+    username: "hibbz"
   } 
 ]
 
@@ -27,7 +27,7 @@ export const Posts = [
   {
     id: 1,
     desc: "this is me having a good time",
-    photo: "./assets/images/domYo.JPG",
+    photo: "images/domYo.JPG",
     date:"5 min ago",
     userId: 1,
     upvote: 32,
@@ -36,7 +36,7 @@ export const Posts = [
   {
     id: 2,
     desc: "hoobidy daa",
-    photo: "./assets/images/111.JPG",
+    photo: "images/111.JPG",
     date:"11 min ago",
     userId: 2,
     upvote: 11,
@@ -45,7 +45,7 @@ export const Posts = [
   {
     id: 3,
     desc: "this is such an ugly time",
-    photo: "./assets/images/fleg2.PNG",
+    photo: "images/fleg2.PNG",
     date:"43 min ago",
     userId: 3,
     upvote: 4,
@@ -54,7 +54,7 @@ export const Posts = [
   {
     id: 4,
     desc: "im crying at this picture",
-    photo: "./assets/images/hibbz.JPG",
+    photo: "images/hibbz.JPG",
     date:"52 min ago",
     userId: 4,
     upvote: 56,
@@ -63,7 +63,7 @@ export const Posts = [
   {
     id: 5,
     desc: "burning burning",
-    photo: "./assets/images/moymeme.JPG",
+    photo: "images/moymeme.JPG",
     date:"23 min ago",
     userId: 5,
     upvote: 1004,

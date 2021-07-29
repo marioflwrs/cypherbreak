@@ -1,14 +1,25 @@
-
 import "./post.scss";
-import { useState } from "react";
-import { Users } from "../../dumbData";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import {MoreVert, ArrowDropUp} from "@material-ui/icons";
+import {format} from "timeago.js";
+import { Link } from "react-router-dom";
 
 export default function Post({post}) {
-  const [upvote,setUpvote] = useState(post.upvote)
-  const [isUpvoted,SetIsUpvoted] = useState(false)
-  const [voteColor, setVoteColor] = useState("white")
-  const [isVoteColor, setIsVoteColor] = useState(false)
+  const [upvote,setUpvote] = useState(post.likes.length);
+  const [isUpvoted,SetIsUpvoted] = useState(false);
+  const [voteColor, setVoteColor] = useState("white");
+  const [isVoteColor, setIsVoteColor] = useState(false);
+  const [user, setUser] = useState({});
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?userId=${post.userId}`);
+      setUser(res.data)
+    };
+    fetchUser();
+  }, [post.userId]);
 
   const upvoteHandler = () => {
     setUpvote(isUpvoted ? upvote - 1 : upvote + 1)
@@ -24,18 +35,20 @@ export default function Post({post}) {
         <div className="post-top">
         
           <div className="post-topleft">
-            <img 
-            className="post-profile-img" 
-            src={Users.filter((u) => u.id === post?.userId)[0].userAvatar} 
-            alt="" 
-            />
+            <Link to={`profile/${user.username}`}>
+              <img 
+              className="post-profile-img" 
+              src={user.profilePicture || PF+"images/defaultProfile.jpg"}
+              alt="" 
+              />
+            </Link>
 
             <span className="post-username">
-              {Users.filter((u) => u.id === post?.userId)[0].username}
+              {user.username}
             </span>
             
             <span className="post-date">
-              {post.date}
+              {format(post.createdAt)}
             </span>
           </div>
 
@@ -46,7 +59,7 @@ export default function Post({post}) {
 
         <div className="post-center">
           <span className="post-text">{post?.desc}</span>
-          <img className="post-image" src={post?.photo} alt="" />
+          <img className="post-image" src={PF+post.img} alt="" />
         </div>
 
         <div className="post-bottom">

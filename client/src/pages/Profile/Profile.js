@@ -1,9 +1,25 @@
 import Navbar from "../../components/Navbar/Navbar";
+import Feed from "../../components/Feed/Feed";
 import "./Profile.scss";
-
 import { Room } from "@material-ui/icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router";
+
 
 export default function Profile() {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [user, setUser] = useState({});
+  const username = useParams().username;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?username=${username}`);
+      setUser(res.data)
+    };
+    fetchUser();
+  }, [username]);
+
   return (
     <div>
       <Navbar />
@@ -12,50 +28,50 @@ export default function Profile() {
           <div className="profile-cover">
             <img 
             className="profile-cover-image" 
-            src="assets/images/foundation-cover.jpg" 
-            alt="" 
+            src={user.coverPicture || PF + "images/defaultCover.jpg"} 
+            alt=""
             />
 
             <img 
             className="profile-user-image" 
-            src="assets/images/box.JPG" 
+            src={user.profilePicture || PF + "images/defaultProfile.jpg"} 
             alt=""
             />
             <div className="profile-info">
-              <h3 className="profile-info-username">Boxwon</h3>
+              <h3 className="profile-info-username">{user.username}</h3>
               <div className="profile-location-wrapper">
                 <Room className="location-icon" />
-                <h3 className="profile-location">Brooklyn, NY</h3>
+                <h3 className="profile-location">{user.city}, {user.state}</h3>
               </div>
             </div>
           </div>
         </div>
         <div className="profile-center">
-          <h2>Followers</h2>
           <div className="follower-container">
-            <div className="follower-content">
-              <img className="follower-image-box" src="./assets/images/domYo.JPG" alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-            <div className="follower-content">
-              <img className="follower-image-box" src="./assets/images/fleg1.JPG" alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-            <div className="follower-content">
-              <img className="follower-image-box" src="./assets/images/hibbz.JPG" alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-            <div className="follower-content">
-              <img className="follower-image-box" src="./assets/images/ray.JPG" alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-            <div className="follower-content">
-              <img className="follower-image-box" src="./assets/images/shaggy.JPG" alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
+            <Feed username={username}/>
           </div>
-          
-
+          {/* <div className="follower-container">
+            <div className="follower-content">
+              <img className="follower-image-box" src={`${PF}images/domYo.JPG`} alt="" />
+              <span className="follwer-name">John Doe</span>
+            </div>
+            <div className="follower-content">
+              <img className="follower-image-box" src={`${PF}images/fleg1.JPG`} alt="" />
+              <span className="follwer-name">John Doe</span>
+            </div>
+            <div className="follower-content">
+              <img className="follower-image-box" src={`${PF}images/hibbz.JPG`} alt="" />
+              <span className="follwer-name">John Doe</span>
+            </div>
+            <div className="follower-content">
+              <img className="follower-image-box" src={`${PF}images/ray.JPG`} alt="" />
+              <span className="follwer-name">John Doe</span>
+            </div>
+            <div className="follower-content">
+              <img className="follower-image-box" src={`${PF}images/shaggy.JPG`} alt="" />
+              <span className="follwer-name">John Doe</span>
+            </div>
+          </div> */}
         </div>
       </div>
     </div>

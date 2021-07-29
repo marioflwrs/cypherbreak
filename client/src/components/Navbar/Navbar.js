@@ -1,15 +1,16 @@
 import "./navbar.scss";
-
-import boxwon from "../../assets/images/box.JPG";
-
 import { Search, Comment, Person } from '@material-ui/icons';
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <div>
       <div className="topbar-container">
 
         <div className="topbar-left">
-          <span className="logo">CYPHERBREAK</span>
+          <Link to="/">
+            <span className="logo">CYPHERBREAK</span>
+          </Link>
         </div>
 
         <div className="topbar-right">
@@ -23,7 +24,7 @@ export default function Navbar() {
               <span className="topbar-icon-badge"></span>
             </div>
             <div className="topbar-icon-item">
-              <img src={boxwon} alt="" className="navbar-image" />
+              <img src="/assets/images/box.JPG" alt="" className="navbar-image" />
               <span className="topbar-icon-badge"></span>
             </div>
           </div> 
