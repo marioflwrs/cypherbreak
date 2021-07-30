@@ -12,6 +12,7 @@ export default function Post({post}) {
   const [isVoteColor, setIsVoteColor] = useState(false);
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PFI = process.env.REACT_APP_PUBLIC_IMAGES;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -59,7 +60,7 @@ export default function Post({post}) {
 
         <div className="post-center">
           <span className="post-text">{post?.desc}</span>
-          <img className="post-image" src={PF+post.img} alt="" />
+          <img className="post-image" src={PFI+post.img} alt="" />
         </div>
 
         <div className="post-bottom">
