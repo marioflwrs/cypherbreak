@@ -28,5 +28,5 @@ mongoose.connect(process.env.CYPHERBREAK_DB_URL, {
   app.use("/api/jams", jamRoute);
 
   app.listen(5000, () => {
-    console.log("backend server is running!")
+    console.log("backend server is running on port 5000!")
   })

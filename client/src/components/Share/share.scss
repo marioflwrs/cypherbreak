@@ -58,11 +58,11 @@
       flex-flow: row nowrap;
       align-items: center;
       justify-content: space-around;
-      cursor: pointer;
 
       .share-option {
         display: flex;
         align-items: center;
+        cursor: pointer;
       }
 
       .share-icon {

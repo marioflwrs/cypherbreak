@@ -1,18 +1,24 @@
 import "./post.scss";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import {MoreVert, ArrowDropUp} from "@material-ui/icons";
-import {format} from "timeago.js";
+import { useContext, useEffect, useState } from "react";
+import { MoreVert, ArrowDropUp } from "@material-ui/icons";
+import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Post({post}) {
   const [upvote,setUpvote] = useState(post.likes.length);
-  const [isUpvoted,SetIsUpvoted] = useState(false);
+  const [isUpvoted,setIsUpvoted] = useState(false);
   const [voteColor, setVoteColor] = useState("white");
   const [isVoteColor, setIsVoteColor] = useState(false);
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const PFI = process.env.REACT_APP_PUBLIC_IMAGES;
+  const { user:currentUser} = useContext(AuthContext);
+
+  useEffect(() => {
+    setIsUpvoted(post.likes.includes(currentUser._id));
+  }, [currentUser._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -23,11 +29,17 @@ export default function Post({post}) {
   }, [post.userId]);
 
   const upvoteHandler = () => {
+    try {
+      axios.put("/posts/"+post._id+"/like", {userId: currentUser._id});
+    } catch(err){
+
+    }
     setUpvote(isUpvoted ? upvote - 1 : upvote + 1)
-    SetIsUpvoted(!isUpvoted)
+    setIsUpvoted(!isUpvoted)
     setVoteColor(isVoteColor ? "white" : "goldenrod")
     setIsVoteColor(!isVoteColor)
-  }
+    
+  };
 
   return (
     <div className="post">
@@ -36,10 +48,10 @@ export default function Post({post}) {
         <div className="post-top">
         
           <div className="post-topleft">
-            <Link to={`profile/${user.username}`}>
+            <Link to={`/profile/${user.username}`}>
               <img 
               className="post-profile-img" 
-              src={user.profilePicture || PF+"images/defaultProfile.jpg"}
+              src={user.profilePicture ? PFI + user.profilePicture : PF + "images/defaultProfile.jpg"}
               alt="" 
               />
             </Link>

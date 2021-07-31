@@ -3,8 +3,8 @@ import Post from "../models/Post.js";
 import User from "../models/User.js";
 
 const router = express.Router();
-//Create a post
 
+//Create a post
 router.post("/", async (req, res) => {
   const newPost = Post(req.body)
 
@@ -31,8 +31,8 @@ router.put("/:id", async(req, res) => {
     res.status(500).json(err);
   }
 });
-//Delete a post
 
+//Delete a post
 router.delete("/:id", async(req, res) => {
   try{
     const post = await Post.findById(req.params.id);
@@ -63,8 +63,8 @@ router.put("/:id/like", async (req, res) => {
     res.status(500).json(err)
   }
 });
-//Get a post
 
+//Get a post
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -75,20 +75,30 @@ router.get("/:id", async (req, res) => {
 });
 
 //Get timeline post
-
 router.get("/timeline/:userId", async (req, res) => {
   try {
-    const currentUser = await User.findById(req.body.userId);
-    const userPosts = await Post.find({ userId: currentUser._id });
+    const currentUser = await User.findById(req.params.userId);
+    const userPosts = await Post.find();
     const friendPosts = await Promise.all(
       currentUser.followings.map((friendId) => {
         return Post.find({ userId: friendId });
       })
     );
-    res.json(userPosts.concat(...friendPosts))
+    res.status(200).json(userPosts.concat(...friendPosts))
   } catch (err) { 
     res.status(500).json(err);
   }
 });
 
-export default router
+//Get user's all posts
+router.get("/profile/:username", async (req, res) => {
+  try {
+    const user = await User.findOne({ username:req.params.username });
+    const posts = await Post.find({ userId:user._id });
+    res.status(200).json(posts);
+  } catch (err) { 
+    res.status(500).json(err);
+  }
+});
+
+export default router;
