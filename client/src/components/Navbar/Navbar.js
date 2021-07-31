@@ -7,7 +7,7 @@ import {AuthContext} from "../../context/AuthContext";
 export default function Navbar() {
 
   const {user} = useContext(AuthContext);
-  const PFI = process.env.REACT_APP_PUBLIC_IMAGES;
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div>
       <div className="topbar-container">
@@ -30,7 +30,7 @@ export default function Navbar() {
             </div>
             <div className="topbar-icon-item">
               <Link to={`/profile/${user.username}`}>
-                <img src={user.profilePicture ? PFI + user.profilePicture : PFI + "defaultProfile.jpg"} alt="" className="navbar-image" />
+                <img src={user.profilePicture ? PF + user.profilePicture : PF + "defaultProfile.jpg"} alt="" className="navbar-image" />
               </Link>
               <span className="topbar-icon-badge"></span>
             </div>

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const JamSchema = new mongoose.Schema (
   {
@@ -48,4 +48,4 @@ const JamSchema = new mongoose.Schema (
     {timestamps: true}
 );
 
-export default mongoose.model("Jam", JamSchema);
+module.exports = mongoose.model("Jam", JamSchema);

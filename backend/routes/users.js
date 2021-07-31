@@ -1,6 +1,6 @@
-import User from "../models/User.js";
-import express from "express";
-import bcrypt from "bcrypt";
+const User = require("../models/User");
+const express = require("express");
+const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
@@ -104,4 +104,4 @@ router.put("/:id/unfollow", async (req, res) => {
   });
 
 
-export default router
+module.exports = router;

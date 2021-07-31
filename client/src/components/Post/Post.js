@@ -13,7 +13,6 @@ export default function Post({post}) {
   const [isVoteColor, setIsVoteColor] = useState(false);
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const PFI = process.env.REACT_APP_PUBLIC_IMAGES;
   const { user:currentUser} = useContext(AuthContext);
 
   useEffect(() => {
@@ -51,7 +50,7 @@ export default function Post({post}) {
             <Link to={`/profile/${user.username}`}>
               <img 
               className="post-profile-img" 
-              src={user.profilePicture ? PFI + user.profilePicture : PF + "images/defaultProfile.jpg"}
+              src={user.profilePicture ? PF + user.profilePicture : PF + "/defaultProfile.jpg"}
               alt="" 
               />
             </Link>
@@ -72,7 +71,7 @@ export default function Post({post}) {
 
         <div className="post-center">
           <span className="post-text">{post?.desc}</span>
-          <img className="post-image" src={PFI+post.img} alt="" />
+          <img className="post-image" src={PF+post.img} alt="" />
         </div>
 
         <div className="post-bottom">

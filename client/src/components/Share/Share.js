@@ -1,5 +1,5 @@
 import "./share.scss";
-import {Photo, Videocam, Event} from "@material-ui/icons";
+import {Photo, Videocam, Event, Cancel} from "@material-ui/icons";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
@@ -14,13 +14,24 @@ export default function Share() {
     const newPost = {
       userId: user._id,
       desc: desc.current.value
+    };
+
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.img = fileName;
+      console.log(newPost);
+      try {
+        await axios.post("/upload", data);
+      } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost)
-    } catch(err) {
-
-    }
-  }
+      await axios.post("/posts", newPost);
+      window.location.reload();
+    } catch (err) {}
+  };
 
   return (
     <div className="share">
@@ -34,6 +45,12 @@ export default function Share() {
           />
         </div>
         <hr className="share-hr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
+            <Cancel className="shareCancelImg" onClick={() => setFile(null)} style={{cursor: "pointer"}} />
+          </div>
+        )}
         <form className="share-bottom" onSubmit={submitHandler}>
           <div className="share-options">
             <label htmlFor="file" className="share-option">

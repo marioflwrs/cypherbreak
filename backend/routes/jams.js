@@ -1,6 +1,6 @@
-import express from "express";
-import Jam from "../models/Jam.js";
-import User from "../models/User.js";
+const express = require("express");
+const Jam = require("../models/Jam.js");
+const User = ("../models/User.js");
 
 const router = express.Router();
 
@@ -74,4 +74,4 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-export default router
+module.exports = router;
