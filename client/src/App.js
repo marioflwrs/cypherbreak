@@ -5,7 +5,6 @@ import Profile from "./pages/Profile/Profile";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
-import "./app.scss";
 
 
 function App() {
@@ -15,16 +14,16 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          {user ? <Home /> : <Register /> }
+          {user ? <Home /> : <Register className="register-component" /> }
         </Route>
         <Route path="/login">
-          {user ? <Redirect to="/"/> : <Login />}
+          {user ? <Redirect to="/"/> : <Login className="login-component" />}
         </Route>
         <Route path="/register">
-          {user ? <Redirect to="/"/> : <Register />}
+          {user ? <Redirect to="/"/> : <Register className="register-component" />}
         </Route>
         <Route path="/profile/:username">
-          <Profile />
+          <Profile className="profile-component"/>
         </Route>
       </Switch>
     </Router>
