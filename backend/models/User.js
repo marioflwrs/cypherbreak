@@ -47,11 +47,11 @@ const UserSchema = new mongoose.Schema({
   },
   city: {
     type: String,
-    max: 50
+    default: ""
   },
   state : {
     type: String,
-    max: 50
+    default:""
   },
 },
 {timestamps: true}

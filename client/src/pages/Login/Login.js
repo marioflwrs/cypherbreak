@@ -22,9 +22,12 @@ export default function Login() {
         <h2 className="login-title">CYPHERBREAK</h2>
         <input placeholder="Email" type="email" required className="login-input" ref={email} />
         <input placeholder="Password" type="password" required minLength="8" className="login-input" ref={password} />
-        <button className="login-button">{ isFetching 
-          ? <CircularProgress className="circle-progress" size="30px" /> 
-          : "Log In" }
+        <button className="login-button">
+          { 
+            isFetching 
+            ? <CircularProgress className="circle-progress" size="30px" /> 
+            : "Log In" 
+          }
         </button>
         <button className="login-register-button">Create a new account</button>
         <span className="forgot-pass">Forgot password?</span>

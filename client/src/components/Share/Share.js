@@ -1,5 +1,5 @@
 import "./share.scss";
-import {Photo, Videocam, Event, Cancel} from "@material-ui/icons";
+import {Photo, Event, Cancel} from "@material-ui/icons";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
@@ -8,11 +8,13 @@ export default function Share() {
   const { user } = useContext(AuthContext);
   const [file, setFile] = useState(null);
   const desc = useRef();
+  const title = useRef();
 
   const submitHandler = async (e) => {
     e.preventDefault()
     const newPost = {
       userId: user._id,
+      title: title.current.value,
       desc: desc.current.value
     };
 
@@ -38,17 +40,31 @@ export default function Share() {
       <div className="share-wrapper">
         <div className="share-top">
           <input 
+            type="text"
+            className="share-input-title"
+            placeholder="Title"
+            ref={title}
+            required
+          />
+          <textarea 
             type="text" 
-            className="share-input" 
-            placeholder="Create a Post"
+            className="share-input-desc" 
             ref={desc}
           />
         </div>
         <hr className="share-hr" />
         {file && (
-          <div className="shareImgContainer">
-            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
-            <Cancel className="shareCancelImg" onClick={() => setFile(null)} style={{cursor: "pointer"}} />
+          <div className="share-img-container">
+            <img 
+              className="share-img" 
+              src={URL.createObjectURL(file)} 
+              alt="" 
+              />
+            <Cancel 
+              className="share-cancel-img" 
+              onClick={() => setFile(null)} 
+              style={{cursor: "pointer", color:"white"}} 
+            />
           </div>
         )}
         <form className="share-bottom" onSubmit={submitHandler}>
@@ -56,12 +72,14 @@ export default function Share() {
             <label htmlFor="file" className="share-option">
               <Photo htmlColor="lightblue" className="share-icon" />
               <span className="share-option-text">Photo</span>
-              <input style={{display: "none"}} type="file" id="file" accept=".png, .jpeg, .jpg" onChange={(e) => setFile(e.target.files[0])} />
+              <input 
+                style={{display: "none"}} 
+                type="file" id="file" 
+                accept=".png, .jpeg, .jpg" 
+                onChange={(e) => setFile(e.target.files[0])} 
+              />
+
             </label>
-            <div className="share-option">
-              <Videocam htmlColor="tomato" className="share-icon" />
-              <span className="share-option-text">Video</span>
-            </div>
             <div className="share-option">
               <Event htmlColor="goldenrod" className="share-icon" />
               <span className="share-option-text">Jams</span>

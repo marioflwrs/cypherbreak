@@ -1,5 +1,5 @@
 import "./navbar.scss";
-import { Search, Comment, Person } from '@material-ui/icons';
+import { Home, Event } from '@material-ui/icons';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import {AuthContext} from "../../context/AuthContext";
@@ -21,30 +21,26 @@ export default function Navbar() {
         <div className="topbar-right">
           <div className="topbar-icons">
             <div className="topbar-icon-item">
-              <Person />
-              <span className="topbar-icon-badge"></span>
+              <Link to="/">
+                <Home />
+              </Link>
+              {/* Holding badge as comment until we work on notification logic <span className="topbar-icon-badge"></span> */}
             </div>
             <div className="topbar-icon-item">
-              <Comment />
-              <span className="topbar-icon-badge"></span>
+              <Link to="/jams">
+                <Event />
+              </Link>
+              {/* <span className="topbar-icon-badge"></span> */}
             </div>
             <div className="topbar-icon-item">
               <Link to={`/profile/${user.username}`}>
                 <img src={user.profilePicture ? PF + user.profilePicture : PF + "defaultProfile.jpg"} alt="" className="navbar-image" />
               </Link>
-              <span className="topbar-icon-badge"></span>
+              {/* <span className="topbar-icon-badge"></span> */}
             </div>
           </div> 
         </div>
-
       </div>
-
-      <div className="topbar-center">
-          <div className="searchbar">
-            <Search className="search-icon"/>
-            <input placeholder="SEARCH" className="search-input" />
-          </div>
-        </div>
     </div>
   )
 }
