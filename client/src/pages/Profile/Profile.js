@@ -50,28 +50,6 @@ export default function Profile() {
           <div className="follower-container">
             <Feed username={username}/>
           </div>
-          {/* <div className="follower-container">
-            <div className="follower-content">
-              <img className="follower-image-box" src={`${PF}images/domYo.JPG`} alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-            <div className="follower-content">
-              <img className="follower-image-box" src={`${PF}images/fleg1.JPG`} alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-            <div className="follower-content">
-              <img className="follower-image-box" src={`${PF}images/hibbz.JPG`} alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-            <div className="follower-content">
-              <img className="follower-image-box" src={`${PF}images/ray.JPG`} alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-            <div className="follower-content">
-              <img className="follower-image-box" src={`${PF}images/shaggy.JPG`} alt="" />
-              <span className="follwer-name">John Doe</span>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>
